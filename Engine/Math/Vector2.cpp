@@ -9,6 +9,8 @@ namespace nc
 	Vector2 const Vector2::up = Vector2{ 0, -1 };
 	Vector2 const Vector2::down = Vector2{ 0, 1 };
 	Vector2 const Vector2::forward = Vector2{ 0, -1 };
+	Vector2 const Vector2::one = Vector2{ 1, 1 };
+	Vector2 const Vector2::zero = Vector2{ 0, 0 };
 
 	std::istream& operator >> (std::istream& stream, Vector2& v)
 	{
@@ -25,6 +27,13 @@ namespace nc
 			std::string vy = line.substr(line.find(",") + 1, line.find("}") - line.find(",") - 1);
 			v.y = std::stof(vy);
 		}
+
+		return stream;
+	}
+
+	std::ostream& operator << (std::ostream& stream, Vector2& v)
+	{
+		stream << v.x << " " << v.y;
 
 		return stream;
 	}
